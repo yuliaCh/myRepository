@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first website</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="webStyle2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="website2.html">Главная</a>
+			<a href="calculatorPage.html" id="hidden3">Калькулятор</a>
+			<a href="riddle.html" id="main">Загадки</a>
+			<a href="guessingGame.html" id="hidden1">Игра Угадайка</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Загадки</h1>
+		<div id="leftBlock-CalRid">
+			<div id="description-CalRid">
+				<h3>Описание функционала</h3>
+				<p class="pHeading-CalRid"><u>Как работает приложение</u></p>
+				<p>
+					Вниманию пользователя предоставляется четыре загадки.  Данные загадки могут быть отгаданы в свободном порядке. Для этого необходимо ввести свой ответ в соответствующее текстовое поле и нажать на кнопку "Ответить". После этого на экране появляются картинка с описанием, изображающая правильный ответ, и уведовление о том угадал ли пользователь загадку. После того как пользователь ответит на все вопросы, на экране появляется сообщение о количестве правильно отгаданных загадок. Для того чтобы закрыть данное сообщение необходимо либо кликнуть на значек "Х" в правом верхнем углу сообщения, либо кликнуть на экран вне границ сообщения, либо нажать на клавишу "Esc". При закрытии данного сообщения, игра возвращается в прежнее состояние, и вниманию пользователя предоставляются уже знакомые ему четыре загадки.
+				</p> 
+				<p class="pHeading-CalRid"><u>Валидация текстовых полей</u></p>
+				<p>
+					Загадка считается отгаданной если ответ пользователя буква в бувкву совпадает с ответом заложенном в программе. При этом правильный ответ может быть написан как буквами верхнего регистра так и буквами нижнего регистра, и может включать в себя внешние пробелы. При нажатии на кнопку "Ответить", в случае наличия пустого поля для ответа, либо когда данное поле заполненно одними пробелами, никаких изменений на странице не происходит. 
+				</p>
+			</div>
+		</div>
+		<div id="rightBlock-CalRid">
+			<div id="text-Rid">
+				<div class="questionBlock">
+					<h3>Загадка №1</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle"
+						 	<label for="question0">Висит груша - нельзя скушать:</label>
+						 	<input type="text" name="question0" id="question0" placeholder="Введите ответ" data-answer="ЛАМПА">
+						 	<input type="button" name="button" value="Ответить" onclick="showAnswer(this)" data-number="0">
+						</form>
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Загадка №1</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<h4>Вы угадали!</h4>
+					 	<p>Правильный ответ: "ЛАМПА"</p>
+					 	<img src="lamp8.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Загадка №2</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle">
+						 	<label for="question1">Без окон, без дверей,<br> Полна горница людей:</label>
+						 	<input type="text" name="question1" id="question1" placeholder="Введите ответ" data-answer="ОГУРЕЦ">
+						 	<input type="button" name="button" value="Ответить" onclick="showAnswer(this)" data-number="1">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Загадка №2</h3>
+					<div class="riddleBlock selectedRiddle">
+						<h4>Вы угадали!</h4>
+						<p>Правильный ответ: "ОГУРЕЦ"</p>
+						<img src="cucumber1.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Загадка №3</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle" >
+						 	<label for="question2">Зимой и летом одним цветом:</label>
+						 	<input type="text" name="question2" id="question2" placeholder="Введите ответ" data-answer="ЕЛКА" data-answer1="ЕЛЬ">
+						 	<input type="button" name="button" value="Ответить" onclick="showAnswer(this)" data-number="2">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Загадка №3</h3>
+					<div class="riddleBlock selectedRiddle">
+						<h4>Вы угадали!</h4>
+					 	<p>Правильный ответ: "ЕЛКА"</p>
+					 	<img  src="pine1.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Загадка №4</h3>
+				 	<div class="riddleBlock">
+					 	<form class="form-riddle">
+						    <label for="question3">Сто одежек<br>И все без застежек.<br>Кто его раздевает,<br>Тот слезы проливает:</label>
+						 	<input type="text" name="question3" id="question3" placeholder="Введите ответ" data-answer="ЛУК">
+						 	<input type="button" name="button" value="Ответить" onclick="showAnswer(this)" data-number="3">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Загадка №4</h3>
+					<div class="riddleBlock">
+						<h4>Вы угадали!</h4>
+					 	<p>Правильный ответ: "ЛУК"</p>
+					 	<img src="onion1.jpg" class="imageBlock">
+					</div>	
+				</div>
+		    </div>
+	    </div>
+    </main>
+    <footer>
+        <p>Дата выпуска: 12/2016</p>
+    </footer>
+    <div id="resultsBlock" onclick="hideResult(event)">
+    	<div id="messageBox">
+    		<p id="closeButton" onclick="hideResult(event)">x</p>
+    		<h3 id="textBlock">Игра окончена!</h3>
+    		<p>Количество правильных ответов: <span id="correctlyAnswered"></span> из 4.</p>
+    	</div>
+    </div>
+    <script type="text/javascript" src="riddle.js"></script>
+</body>
+</html>

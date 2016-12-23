@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first website</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="webStyle2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="website2ENGLISH.html">Home</a>
+			<a href="calculatorENGLISH.html" id="hidden3">Calculator</a>
+			<a href="riddleENGLISH.html" id="main">Riddles</a>
+			<a href="guessingGameENGLISH.html" id="hidden1">Guessing Game</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Riddles</h1>
+		<div id="leftBlock-CalRid">
+			<div id="description-CalRid">
+				<h3>Application Description</h3>
+				<p class="pHeading-CalRid"><u>How the application works</u></p>
+				<p>
+					The application consists of four riddles. The riddles can be guessed in any order. For that the user needs to enter their answer into the corresponding text field and click on the "Answer" button. As the result of that, a picture with a description appears on the screen. The picture displays a correct answer and informs the user whether their answer is correct. Upon submition of all four answers, a pop-up message appears informing the user about the total number of correctly answered questions. In order to close this message, the user may click on the "X" symbol in the top right corner of the message. He/she may also click on the screen outside of the message border or may press the "Esc" key. Upon closing the message, the game goes back to its initial state with four riddles displayed on the screen.
+				</p> 
+				<p class="pHeading-CalRid"><u>Text Field Validation</u></p>
+				<p>
+					The answer of the user is considered to be correct only when its characters and their order are identical to characters and their order of an answer that the application holds. In addition, text fields are not case-sensitive and accept leading and trailing whitespaces. In case of submition of an empty field or a field containig only whitespaces, no changes appear on the page. 
+				</p>
+			</div>
+		</div>
+		<div id="rightBlock-CalRid">
+			<div id="text-Rid">
+				<div class="questionBlock">
+					<h3>Riddle #1</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle"
+						 	<label for="question0">What is orange and sounds like a parrot?</label>
+						 	<input type="text" name="question0" id="question0" placeholder="Enter your answer" data-answer="CARROT">
+						 	<input type="button" name="button" value="Answer" onclick="showAnswer(this)" data-number="0">
+						</form>
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Riddle #1</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<h4>You've answered correctly!</h4>
+					 	<p>Correct answer is "CARROT".</p>
+					 	<img src="carrot2.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Riddle #2</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle">
+						 	<label for="question1">I'm tall when I'm young,<br>I'm short when I'm old.<br>What am I?</label>
+						 	<input type="text" name="question1" id="question1" placeholder="Enter your answer" data-answer="PENCIL">
+						 	<input type="button" name="button" value="Answer" onclick="showAnswer(this)" data-number="1">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Riddle #2</h3>
+					<div class="riddleBlock selectedRiddle">
+						<h4>You've answered correctly!</h4>
+						<p>Correct answer is "PENCIL".</p>
+						<img src="pencil1.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Riddle #3</h3>
+				 	<div class="riddleBlock selectedRiddle">
+					 	<form class="form-riddle" >
+						 	<label for="question2">Take off my skin - I won't cry,<br>But you will! What am I?</label>
+						 	<input type="text" name="question2" id="question2" placeholder="Eneter your answer" data-answer="ONION">
+						 	<input type="button" name="button" value="Answer" onclick="showAnswer(this)" data-number="2">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Riddle #3</h3>
+					<div class="riddleBlock selectedRiddle">
+						<h4>You've answered correctly!</h4>
+					 	<p>Correct answer is "ONION".</p>
+					 	<img  src="onion1.jpg" class="imageBlock">
+					</div>
+				</div>
+				<div class="questionBlock">
+					<h3>Riddle #4</h3>
+				 	<div class="riddleBlock">
+					 	<form class="form-riddle">
+						    <label for="question3">What is at the end of a rainbow?</label>
+						 	<input type="text" name="question3" id="question3" placeholder="Enter your answer" data-answer="W">
+						 	<input type="button" name="button" value="Answer" onclick="showAnswer(this)" data-number="3">
+						</form class="form-riddle">
+					</div>
+				</div>
+				<div class="answerBlock">
+					<h3>Riddle #4</h3>
+					<div class="riddleBlock">
+						<h4>You've answered correctly!</h4>
+					 	<p>Correct answer is a letter "W".</p>
+					 	<img src="W.jpg" class="imageBlock">
+					</div>	
+				</div>
+		    </div>
+	    </div>
+    </main>
+    <footer>
+        <p>Complition date: 12/2016</p>
+    </footer>
+    <div id="resultsBlock" onclick="hideResult(event)">
+    	<div id="messageBox">
+    		<p id="closeButton" onclick="hideResult(event)">x</p>
+    		<h3 id="textBlock">The game is over!</h3>
+    		<p>Questions answered correctly: <span id="correctlyAnswered"></span> out of 4.</p>
+    	</div>
+    </div>
+    <script type="text/javascript" src="riddleENGLISH.js"></script>
+</body>
+</html>

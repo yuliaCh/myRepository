@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first website</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="webStyle2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="website2ENGLISH.html">Home</a>
+			<a href="calculatorENGLISH.html" id="main">Calculator</a>
+			<a href="riddleENGLISH.html" id="hidden3">Riddles</a>
+			<a href="guessingGameENGLISH.html" id="hidden1">Guessing Game</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Calculator</h1>
+		<div id="leftBlock-CalRid">
+			<div id="description-CalRid">
+				<h3>Application Description</h3>
+				<p class="pHeading-CalRid"><u>How the application works</u></p>
+				<p>
+				Calculator application performs calculations with numbers, entered into the "Number 1" and "Number 2" text fields, when one of the buttons with the following math symbols is clicked on: "+", "-", "*" or "/". The result of these calculations is displayed in the "Result" text field. In order to clear the fields, the user needs to click on the "Clear Fields" button.
+				</p> 
+				<p class="pHeading-CalRid"><u>Text Field Validation</u></p>
+				<p>
+				The application works with integers and decimal numbers. In case the user enters a non-numerical character into the "Number 1" or "Number 2" field, the field gets cleared and the "Result" field displays "Error" message upon user's clicking on one of the buttons with a math symbol. The error message also gets displayed when there is an attempt to divide a number by zero. Leading and trailings whitespaces are accepted. Empty text fields are treated as if they contain zero. The "Result" field is a read-only field with a purpose to display the result of calculations and error messages. It is not possible to enter any data into this field.
+				</p>
+			</div>
+		</div>
+		<div id="rightBlock-CalRid">
+			<div id="text-Cal">
+				<form id="form-calculator">
+					<div class = "fieldBlock">
+						<label for="number1">Number 1:</label>
+						<input type="text" name="number1" id="number1" placeholder="Number 1">
+					</div>
+					<div class = "fieldBlock">
+						<label for="number2">Nubmer 2:</label>
+						<input type="text" name="number2" id="number2" placeholder="Number 2">
+					</div>
+					<div id = "buttonBlock">
+						<input type="button" name="sum" onclick="add()" value="+">
+						<input type="button" name="sum" onclick="substract()" value="-">
+						<input type="button" name="sum" onclick="multiply()" value="*">
+						<input type="button" name="sum" onclick="divide()" value="/">
+					</div>
+					<div class = "fieldBlock">
+						<label for = "resultField">Result:</label>
+						<input type="text" name="resultField" id="resultField" placeholder="Result" readonly>
+					</div>
+					<div id = "resetButton">
+						<input type="reset" name="reset" value="Clear fields">
+					</div>
+				</form>
+			</div>
+	    </div>
+    </main>
+    <footer>
+        <p>Complition date: 12/2016</p>
+    </footer>
+    <script type="text/javascript" src="calculatorENGLISH.js"></script>
+</body>
+</html>

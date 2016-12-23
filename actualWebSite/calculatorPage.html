@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first website</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="webStyle2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="website2.html">Главная</a>
+			<a href="calculatorPage.html" id="main">Калькулятор</a>
+			<a href="riddle.html" id="hidden3">Загадки</a>
+			<a href="guessingGame.html" id="hidden1">Игра Угадайка</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Калькулятор</h1>
+		<div id="leftBlock-CalRid">
+			<div id="description-CalRid">
+				<h3>Описание функционала</h3>
+				<p class="pHeading-CalRid"><u>Как работает приложение</u></p>
+				<p>
+					Программа Калькулятор производит вычесления с данными числового формата, введеными в поля "Число1" и "Число2" при нажатии на одну из кнопок со знаком "+", "-", "*" или "/". Результат вычислений выводится в поле "Результат". Для того чтобы очистить поля приложения необходимо нажать на кнопку "Очистить поля".
+				</p> 
+				<p class="pHeading-CalRid"><u>Валидация текстовых полей</u></p>
+				<p>
+					Вычисления производятся с целыми и дробными (с разделителем в виде точки) числами. В случае когда в поле "Число1" и/или "Число2" вводятся данные не являющияся числом, при нажатии на одну из кнопок со знаком вычисления данное поле очищается и в поле "Результат" выводится сообщение "Ошибка". Также, сообщение об ошибке выводится при делении на ноль. Числа введенные с внешними пробелами допускаются. Пустые поля воспринимаются как поля со значением ноль. Поле "Результат" служит для выведения результатов вычислений и сообщений об ошибке, введение данных в это поле не допускается.
+				</p>
+			</div>
+		</div>
+		<div id="rightBlock-CalRid">
+			<div id="text-Cal">
+				<form id="form-calculator">
+					<div class = "fieldBlock">
+						<label for="number1">Число 1:</label>
+						<input type="text" name="number1" id="number1" placeholder="Число 1">
+					</div>
+					<div class = "fieldBlock">
+						<label for="number2">Число 2:</label>
+						<input type="text" name="number2" id="number2" placeholder="Число 2">
+					</div>
+					<div id = "buttonBlock">
+						<input type="button" name="sum" onclick="add()" value="+">
+						<input type="button" name="sum" onclick="substract()" value="-">
+						<input type="button" name="sum" onclick="multiply()" value="*">
+						<input type="button" name="sum" onclick="divide()" value="/">
+					</div>
+					<div class = "fieldBlock">
+						<label for = "resultField">Результат:</label>
+						<input type="text" name="resultField" id="resultField" placeholder="Результат" readonly>
+					</div>
+					<div id = "resetButton">
+						<input type="reset" name="reset" value="Очистить поля">
+					</div>
+				</form>
+			</div>
+	    </div>
+    </main>
+    <footer>
+    	<p>Дата выпуска: 12/2016</p>
+    </footer>
+    <script type="text/javascript" src="calculatorPage1.js"></script>
+</body>
+</html>

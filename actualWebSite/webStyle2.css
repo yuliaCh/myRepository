@@ -1,0 +1,682 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html {
+	/*height: 100%;*/
+	overflow-x: hidden;
+
+}
+
+body {
+	font-family: 'Roboto Slab', serif;
+	background: rgba(211, 211, 211, 0.42);
+	/*height: 100%;*/
+	overflow-x: hidden;
+}
+
+header {
+	background: rgb(141, 141, 141);
+	font-size: 22px;
+	color: white;
+}
+
+header nav {
+	display: flex;
+	justify-content: center;
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+	box-sizing: border-box;
+	padding: 10px 30px;
+}
+
+nav a:hover {
+	background: rgb(116, 116, 116);
+	
+}
+
+#main {
+	background: black;
+	color: white;
+}
+
+@media only screen and (max-width: 760px){
+	a#hidden1 {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 600px){
+	a#hidden2 {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 500px){
+	a#hidden3 {
+		display: none;
+	}
+}
+
+/*#list1 li {
+	display: inline-block;
+	margin: 12px 30px;
+	padding: 7px 25px;
+}
+
+#list1 li:hover {
+    background: #a2a2a2;
+    box-shadow: 0px 5px 30px #434242;
+}
+
+#list1 li:active {
+    background: #a2a2a2;
+   	border: 1px solid #a2a2a2;
+}
+
+#list1 li a {
+	text-decoration: none;
+	color: white;
+}*/
+
+main {
+	/*height: 100%;*/
+	overflow: auto;
+	margin-bottom: 100px;
+	overflow-x: hidden;
+}
+
+a#flag {
+	float: right;
+	margin: 10px 20px 30px 0;
+}
+
+a#flag img {
+	width: 20px;
+}
+a#flag {
+	text-decoration: none;
+	color: black;
+}
+
+main h1 {
+	text-align: center;
+	margin: 50px 0px;
+	clear: both;
+}
+
+/*#list2 li {
+	display: inline-block;
+}
+
+
+div#text-Home p a:link, #list2 li a:link {
+	color: darkblue;
+}
+
+div#text-Home p a:visited, #list2 li a:visited {
+	color: purple;
+}
+
+div#text-Home p a:hover, #list2 li a:hover {
+	color: #035dfb;
+}*/
+
+footer p {
+	color: lightgrey;
+	margin-right: 10px;
+}
+
+footer {
+	background: rgb(141, 141, 141);
+	padding: 10px;
+	text-align: right;
+	color: lightgrey;
+	clear: both;
+}
+
+#leftBlock-Home {
+	width: 35%;
+	float: left;
+	text-align: right;
+}
+
+#leftBlock-Home img {
+	width: 60%;
+}
+
+
+#rightBlock-Home {
+	width: 60%;
+	float: right;
+}
+
+#text-Home{
+	background: white;
+	width: 75%;
+	padding: 40px;
+}
+
+@media only screen and (max-width: 760px){
+	#leftBlock-Home {
+		width:100%;
+		text-align: center;
+	}
+	#leftBlock-Home img {
+		width: 35%;
+		margin-bottom: 40px;
+	}
+	#rightBlock-Home {
+		width: 100%;
+	}
+	#text-Home {
+		margin: auto;
+	}
+}
+
+
+#text-Home p {
+margin-bottom: 15px;
+line-height: 180%;
+text-align: justify;
+}
+
+/* The code for CALCULATOR PAGE is below: */
+
+#leftBlock-CalRid {
+	width: 45%;
+	float:left;
+}
+
+#description-CalRid {
+
+	background: white;
+	padding: 40px;
+	width: 80%;
+	float: right;
+	box-sizing: border-box;
+}
+
+#description-CalRid h3 {
+	text-align: center;
+	font-size: 130%;
+	
+}
+
+#description-CalRid p {
+	margin: 0px 0px 15px 0px;
+	line-height: 180%;
+	text-align: justify;
+}
+
+#description-CalRid p.pHeading-CalRid {
+	margin: 15px 0px 0px 0px;
+}
+
+#rightBlock-CalRid {
+	width: 45%;
+	float: right;
+}
+
+#text-Cal {
+	background: white;
+	width: 280px;
+	padding: 45px 40px;
+}
+
+@media only screen and (max-width: 960px){
+	#leftBlock-CalRid {
+		width:100%;
+		margin-bottom: 100px;
+	}
+	#description-CalRid {
+		margin: auto;
+		float: none;
+	}
+	#rightBlock-CalRid {
+		width: 100%;
+	}
+	#text-Cal {
+		margin: auto;
+	}
+}
+
+.fieldBlock input {
+	padding: 5px;
+	font-size: 15px;
+	margin-bottom: 20px;
+}
+
+.fieldBlock label {
+	font-size: 18px;
+	display: block;
+}
+
+#buttonBlock input {
+	width: 40px;
+	padding: 10px 0px;
+	font-size: 30px;
+	margin: 5px 10px 20px 0px;
+}
+
+#resetButton input {
+	width: 205px;
+	padding: 5px 0px;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+form#form-calculator {
+	width: 220px;
+	background: lightgrey;
+	padding: 25px 15px 30px 30px;
+	border: 1px solid grey;
+	margin: auto;
+}
+
+
+/* The code for RIDDLE PAGE is below: */
+
+div.riddleBlock {
+	background: lightgrey;
+	padding: 15px;
+	border: 1px solid grey;
+}
+
+div.selectedRiddle {
+	margin-bottom: 40px;
+}
+
+.answerBlock h3, .questionBlock h3 {
+	margin-bottom: 10px;
+}
+
+img.imageBlock {
+	width: 100%;
+	margin-top: 10px;
+}
+
+#text-Rid {
+	background: white;
+	width: 300px;
+	padding: 40px;
+}
+
+@media only screen and (max-width: 960px){
+	#text-Rid {
+		margin: auto;
+	}
+}
+
+form.form-riddle input {
+	padding: 5px;
+	font-size: 17px;
+	margin-top: 10px;
+}
+
+.answerBlock {
+	display:none;
+}
+
+#resultsBlock {
+	background: rgba(110, 105, 105, 0.419608);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	display: none;
+}
+
+#messageBox {
+	background: rgb(245, 245, 245);
+	border: 1px solid rgb(77, 77, 77);
+	width: 500px;
+	margin: auto;
+	margin-top: 250px;
+	padding: 10px 25px 40px 40px;
+}
+
+#closeButton {
+	float: right;
+	font-size: 27px;
+	font-family: 'Nunito', sans-serif;
+	color: #bebebe;
+	cursor: pointer;
+}
+
+#closeButton:hover {
+	color: #707070;
+	font-size: 30px;
+}
+
+#textBlock {
+margin: 40px 0px 10px 0px;
+}
+
+/* The code for GUESSING GAME PAGE is below: */
+
+#leftBlock-Game {
+	width: 100%;
+	margin-bottom: 100px;
+}
+
+#description-Game {
+	width: 80%;
+	text-align: justify;
+	background: white;
+	padding: 40px;
+	margin: auto;
+}
+
+#description-Game h3 {
+	text-align: center;
+	font-size: 130%;
+}
+
+#description-Game p {
+	margin: 0px 0px 15px 0px;
+	line-height: 180%;
+}
+
+#description-Game p.pHeading-Game {
+	margin: 15px 0px 0px 0px;
+}
+
+#rightBlock-Game {
+	width: 100%;
+}
+
+#text-Game {
+	background: white;
+	width: 700px;
+	padding: 40px;
+	margin:auto;
+}
+
+.inlineBlock {
+	display: inline-block;
+}
+
+#txt1, #txt2 {
+	width: 220px;
+	background: rgb(243, 243, 243);
+	/*border: 2px solid rgb(46, 46, 212);
+	box-shadow: 5px 5px 15px rgb(199, 198, 198);
+	background: rgba(247, 247, 247, 0.97);*/
+}
+
+/* #txt1 {
+	border: 2px solid #E91E63;
+	color: #E91E63;
+}
+
+#txt2 {
+	border: 2px solid #3f51b5;
+	color: #3f51b5;
+} */
+
+input.field {
+	margin: 30px 20px 20px 20px;
+	padding: 5px;
+	font-size: 17px;
+	/*border: 1px solid blue;*/
+	width: 169px;
+}
+
+input#startButton {
+ 
+ padding: 5px 10px;
+ font-size: 20px;
+ display: block;
+ margin:auto;
+/* background: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));
+ color:white;
+ border: 0.1px solid grey;
+ text-shadow: 2px 2px 3px black;
+ box-shadow: 2px 2px 10px grey; */
+}
+
+#elementsBlock {
+	width: 155px;
+	vertical-align: bottom;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+legend {
+	margin:auto;
+	font-size: 20px;
+	display: block;
+}
+
+#elementsBlock span {
+	font-size: 25px;
+	margin-bottom: 20px;
+	color: black;
+	display:block;
+}
+
+div#statusField {
+	margin-bottom: 30px;
+	font-size: 17px;
+/*	background: white;
+	border: 1px solid grey; 
+	color: rgb(187, 169, 169);*/
+	text-align: center;
+}
+
+div#background {
+	padding: 40px;
+	/*background: #f0ecec;*/
+	border: 1px solid grey;
+	background: lightgrey;
+}
+
+div.msgCover {
+	background: rgba(110, 105, 105, 0.419608);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+
+div.msg {
+	background: rgb(245, 245, 245);
+	border: 1px solid rgb(77, 77, 77);
+	width: 500px;
+	margin: auto;
+	margin-top: 250px;
+	text-align: center;
+	padding: 10px 0 40px 0;
+}
+
+div#congradsBox {
+	border: 1px solid #3F51B5;
+	animation: congradsBox 1s infinite alternate, flyingIn 0.5s;
+	position: relative;
+	z-index: 1;
+}
+
+div.msg span {
+	float: right;
+	margin: 0 25px;
+	font-size: 27px;
+	font-family: 'Nunito', sans-serif;
+	color: #bebebe;
+	cursor: pointer;
+}
+
+div.msg span:hover {
+	color: #707070;
+	font-size: 30px;
+}
+
+div.msg p {
+	margin-top: 40px;
+	font-size: 18px;
+}
+
+p#congrads {
+	font-size: 40px;
+	color: #3F51B5;
+	animation: congrads 1s infinite alternate;
+}
+
+@keyframes congrads {
+	0% {color: #3F51B5;}
+	45% {color: #e91e63;}
+	55% {color: #e91e63;}
+	100% {color: #ffc107;}
+}
+
+@keyframes congradsBox {
+	0% {border: 2px solid #3F51B5;}
+	45% {border: 2px solid #e91e63;}
+	55% {border: 2px solid #e91e63;}
+	100% {border: 2px solid #ffc107;}
+}
+
+@keyframes flyingIn {
+	from {top: -300px; opacity: 0;}
+	to {top: 0px; opacity: 1;}
+}
+
+div.msg input {
+	font-size: 20px;
+	padding: 5px 20px;
+	margin: 20px 15px 0 15px;
+}
+
+div.msgCover div#images {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+
+}
+div#images img {
+	width:30px;
+	margin: 0 35px;
+	position: relative;
+	top: -100px;
+}
+
+div#images img.star1 {
+	animation: stars 6s linear 3s infinite, spinning 4s linear infinite;
+}
+div#images img.star2 {
+	animation: stars 6s linear 4s infinite, spinning 4s linear infinite;
+}
+div#images img.star3 {
+	animation: stars 6s linear 5s infinite, spinning 4s linear infinite;
+}
+div#images img.star4 {
+	animation: stars 6s linear 6s infinite, spinning 4s linear infinite;
+}
+div#images img.star5 {
+	animation: stars 6s linear 7s infinite, spinning 4s linear infinite;
+}
+div#images img.star6 {
+	animation: stars 6s linear 8s infinite, spinning 4s linear infinite;
+}
+div#images img.star7 {
+	animation: stars 6s linear 9s infinite, spinning 4s linear infinite;
+}
+div#images img.star8 {
+	animation: stars 6s linear 10s infinite, spinning 4s linear infinite;
+}
+div#images img.star9 {
+	animation: stars 6s linear 11s infinite, spinning 4s linear infinite;
+}
+div#images img.star10 {
+	animation: stars 6s linear 12s infinite, spinning 4s linear infinite;
+}
+
+@keyframes stars {
+	0% {top: -100px; opacity: 1;}
+	50% {top: 250px; opacity: 0.9;}
+	100% {top: 600px; opacity: 0;}
+}
+
+@keyframes spinning {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+img.firework {
+	width: 180px;
+	opacity: 0;
+}
+
+div.msgCover div#imageBlock {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+}
+
+img#fw1 {
+	position: absolute;
+	left: 140px;
+	top: 40px;
+	animation: firework 1s 1s;
+	filter: brightness(120%)
+}
+
+img#fw2 {
+	transform: rotateY(180deg);
+	position: absolute;
+	right: 150px;
+	top: 150px;
+	animation: firework 1s 2s;
+	filter: brightness(120%)
+}
+
+img#fw3 {
+	position: absolute;
+	left: 80px;
+	top: 440px;
+	animation: firework 1s 3s;
+	filter: brightness(120%)
+}
+
+@keyframes firework {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}	
+}
+
+div.msg h1 {
+	margin-top: 40px;
+	clear: both;
+}
+
+div#gameOver {
+	animation: flyingIn 0.5s;
+	position: relative;
+}
+
+img#sadFace {
+	width: 100px;
+	float: right;
+	animation: sadFace 1s linear infinite alternate;
+}
+
+@keyframes sadFace {
+	0% {transform: translate(20px, -5px) rotate(10deg)}
+	100% {transform: translate(30px, -5px) rotate(30deg)}
+}
+
+/*@keyframes rounds {
+	0% {text-shadow: 0px 0px 3px red; font-size: 27px;}
+	100% {text-shadow: 0px 0px 3px red; font-size: 27px;}
+}*/

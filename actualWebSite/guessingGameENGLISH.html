@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first website</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="webStyle2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<nav>
+			<a href="website2ENGLISH.html">Home</a>
+			<a href="calculatorENGLISH.html" id="hidden2">Calculator</a>
+			<a href="riddleENGLISH.html" id="hidden1">Riddles</a>
+			<a href="guessingGameENGLISH.html" id="main">Guessing Game</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Guessing Game</h1>
+		<div id="leftBlock-Game">
+			<div id="description-Game">
+				<h3>Application Description</h3>
+				<p class="pHeading-Game"><u>How the application works</u></p>
+				<p>
+					"Guessing Game" was designed with two players in mind. The logic of the game is that the program selects a number between 0 and 100, and each of the players tries to guess that number taking their turns. Each of the players has 10 attempts. The game starts when one of the players clicks on the "Start!" button. After that the Player 1 is prompted to enter their number into the corresponding text field. The number gets submitted by pressing the "Enter" key. In case a number submitted by the Player 1 doesn't much the selected number, the Player 2 takes their turn. Every time both players get to use their attempt, they go to the next raund. The game continues untill one of the players gets to guess the number, or untill both players run out of their attempts. 
+				</p>
+				<p>
+					In case one of the players gets to guess the number, a pop-up message with congratulations for the winner appears on the screen. The message is accompanied by firework and falling stars animation. In case none of the players gets to guess the number, another pop-up message appears on the screen. The message informs the players about the end of the game and reveals the selected number. This message is accompanied by sad emoticon animation. In order to close any of these messages, the user may click on the "X" symbol in the top right corner of the message. He/she may also click on the screen outside of the message border or may press the "Esc" key. Upon closing the message, the game goes back to its initial state.
+				</p>
+				<p>
+					Any of the players can quit the game at any time before it reaches its end. For that they need to click on the "Replay" button, which takes place of the "Start!" button, after the latter one gets clicked on. As the result, a confirmation pop-up message appears on the screen. In case a player clicks on "Yes" button of the message, the page gets reloaded and the game returns to its initial state. In case a player clicks on "Cancel" button, the game resumes. Also, in order to continue the game a player may either click on the "X" symbol in the top right corner of the message, click on the screen outside of the message border or may press the "Esc" key.
+				</p>
+				<p class="pHeading-Game"><u>Text Field Validation</u></p>
+				<p>
+					Text fields accept integers within a range of 0 to 100 inclusively. Text fields also accept leading and trailing whitespaces. In case a player submits an integer whithin that range but not equal to the selected number, a promt appears on the screen. In case a player submits a decimal number or any non-numerical character, the following error message appears on the screen: "Enter an integer". In case a player submits a number outside of specified range, the following error message appears on the screen: "The number should be between 0 and 100 inclusively". In case a player submits an empty field or a field containing only whitespaces, no changes appear on the page. Only when a player submits an integer not equal to the sellected number, the other player takes their turns. Otherwise, an error message is displayed and the turn stays with the same player.
+				</p>
+			</div>
+		</div>
+		<div id="rightBlock-Game">
+			<div id="text-Game">
+			<div id="background">
+				<div id="statusField">
+					<p>To start click on the "Start!" button</p>
+				</div>
+				<form>
+					<fieldset class="inlineBlock" id="txt1">
+						<legend>Player 1</legend>
+						<input type="text" placeholder="" class="field" disabled>
+					</fieldset>
+					<div class="inlineBlock" id="elementsBlock">
+						<span></span>
+						<input type="button" value="Start!" id="startButton">
+					</div>
+					<fieldset class="inlineBlock" id="txt2">
+						<legend>Player 2</legend>
+						<input type="text" placeholder="" class="field" disabled>
+					</fieldset>
+					
+				</form>
+				</div>
+			</div>
+	    </div>
+    </main>
+    <footer>
+        <p>Complition date: 12/2016</p>
+    </footer>
+    <div class="msgCover">
+	    <div class="msg">
+	    	<span>x</span>
+	    	<p>Are you sure you want to exit the game?</p>
+	    	<input type="button" id="yes" name="yes" value="Yes">
+	    	<input type="button" id="cancel" name="cancel" value="Cancel">
+	    </div>
+    </div>
+    <div class="msgCover">
+    	
+    	<div class="msg" id="congradsBox">
+    		<span>x</span>
+    		<p id="congrads"><b>Congratulations!</b></p>
+    		<p>You've guessed the number!</p>
+    	</div>
+    	<div id="images">
+    		<img class="star9" src="star.png">
+    		<img class="star6" src="star.png">
+    		<img class="star4" src="star.png">
+    		<img class="star5" src="star.png">
+    		<img class="star2" src="star.png">
+    		<img class="star1" src="star.png">
+    		<img class="star4" src="star.png">
+    		<img class="star6" src="star.png">
+    		<img class="star8" src="star.png">
+    		<img class="star5" src="star.png">
+    		<img class="star3" src="star.png">
+    		<img class="star7" src="star.png">
+    	</div>
+    	<!--<div id="images">
+    		<img class="star7" src="star.png">
+    		<img class="star5" src="star.png">
+    		<img class="star8" src="star.png">
+    		<img class="star4" src="star.png">
+    		<img class="star6" src="star.png">
+    		<img class="star2" src="star.png">
+    		<img class="star4" src="star.png">
+    		<img class="star1" src="star.png">
+    		<img class="star3" src="star.png">
+    		<img class="star5" src="star.png">
+    		<img class="star8" src="star.png">
+    		<img class="star9" src="star.png">
+    	</div>-->
+    	<div id="imageBlock">
+    		<img src="firework3.png" class="firework" id="fw1">
+    		<img src="firework3.png" class="firework" id="fw2">
+    		<img src="firework3.png" class="firework" id="fw3">
+    	</div>
+    </div>
+    <div class="msgCover">
+    	<div class="msg" id="gameOver">
+    		<span>x</span>
+    		<h1>The game is over!</h1>
+    		<p></p>
+    		<img src="sadFace10.png" id="sadFace">
+    	</div>
+    </div>
+    <script type="text/javascript" src="guessingGameENGLISH.js"></script>
+</body>
+</html>
