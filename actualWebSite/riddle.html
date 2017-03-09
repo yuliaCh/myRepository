@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My first website</title>
+	<title>Mock-Up - Riddles</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="webStyle2.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
@@ -17,6 +17,10 @@
 		</nav>
 	</header>
 	<main>
+		<a href="riddleENGLISH.html" id="flag">
+			<img src="enFlag2.png">
+			<span>English</span>
+		</a>
 		<h1>Загадки</h1>
 		<div id="leftBlock-CalRid">
 			<div id="description-CalRid">
@@ -113,8 +117,8 @@
     </footer>
     <div id="resultsBlock" onclick="hideResult(event)">
     	<div id="messageBox">
-    		<p id="closeButton" onclick="hideResult(event)">x</p>
-    		<h3 id="textBlock">Игра окончена!</h3>
+    		<span id="closeButton" onclick="hideResult(event)">x</span>
+    		<p id="textBlock">Игра закончена!</p>
     		<p>Количество правильных ответов: <span id="correctlyAnswered"></span> из 4.</p>
     	</div>
     </div>

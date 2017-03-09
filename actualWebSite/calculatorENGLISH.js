@@ -50,3 +50,8 @@ function substitute(id) {
 		document.getElementById("resultField").value = "Error"
 }
 
+window.onunload = resetFields;
+
+function resetFields() {
+	document.getElementsByTagName("FORM")[0].reset();
+}

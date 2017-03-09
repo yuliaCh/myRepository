@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My first website</title>
+	<title>Mock-Up - Guessing Game ENG</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="webStyle2.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
@@ -17,6 +17,10 @@
 		</nav>
 	</header>
 	<main>
+		<a href="guessingGame.html" id="flag">
+			<img src="rusFlag1.png">
+			<span>Русский</span>
+		</a>
 		<h1>Guessing Game</h1>
 		<div id="leftBlock-Game">
 			<div id="description-Game">
@@ -68,17 +72,16 @@
     <div class="msgCover">
 	    <div class="msg">
 	    	<span>x</span>
-	    	<p>Are you sure you want to exit the game?</p>
+	    	<p id="confMsg">Are you sure you want to exit the game?</p>
 	    	<input type="button" id="yes" name="yes" value="Yes">
 	    	<input type="button" id="cancel" name="cancel" value="Cancel">
 	    </div>
     </div>
     <div class="msgCover">
-    	
     	<div class="msg" id="congradsBox">
     		<span>x</span>
     		<p id="congrads"><b>Congratulations!</b></p>
-    		<p>You've guessed the number!</p>
+    		<p></p>
     	</div>
     	<div id="images">
     		<img class="star9" src="star.png">
@@ -94,20 +97,6 @@
     		<img class="star3" src="star.png">
     		<img class="star7" src="star.png">
     	</div>
-    	<!--<div id="images">
-    		<img class="star7" src="star.png">
-    		<img class="star5" src="star.png">
-    		<img class="star8" src="star.png">
-    		<img class="star4" src="star.png">
-    		<img class="star6" src="star.png">
-    		<img class="star2" src="star.png">
-    		<img class="star4" src="star.png">
-    		<img class="star1" src="star.png">
-    		<img class="star3" src="star.png">
-    		<img class="star5" src="star.png">
-    		<img class="star8" src="star.png">
-    		<img class="star9" src="star.png">
-    	</div>-->
     	<div id="imageBlock">
     		<img src="firework3.png" class="firework" id="fw1">
     		<img src="firework3.png" class="firework" id="fw2">
@@ -117,7 +106,7 @@
     <div class="msgCover">
     	<div class="msg" id="gameOver">
     		<span>x</span>
-    		<h1>The game is over!</h1>
+    		<p id="gameOverMsg">The game is over!</p>
     		<p></p>
     		<img src="sadFace10.png" id="sadFace">
     	</div>

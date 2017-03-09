@@ -109,3 +109,12 @@ window.onkeydown = function() {hideResult(event)};
 		hideResult(event);
 	}
 } */
+
+window.onunload = resetFields;
+
+function resetFields() {
+	var forms = document.getElementsByTagName("FORM");
+	for(var i=0; i<forms.length; i++) {
+		forms[i].reset();
+	}	
+}

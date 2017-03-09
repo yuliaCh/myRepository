@@ -265,7 +265,11 @@ function compareNumbers(j) {
 	}
 } 
 
+window.onunload = resetFields;
 
+function resetFields() {
+	document.getElementsByTagName("FORM")[0].reset();
+}
 
 
 		

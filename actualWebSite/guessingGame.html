@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My first website</title>
+	<title>Mock-Up - Guessing Game</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="webStyle2.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
@@ -17,11 +17,17 @@
 		</nav>
 	</header>
 	<main>
+		<a href="guessingGameENGLISH.html" id="flag">
+			<img src="enFlag2.png">
+			<span>English</span>
+		</a>
 		<h1>Игра Угадайка</h1>
 		<div id="leftBlock-Game">
 			<div id="description-Game">
 				<h3>Описание функционала</h3>
 				<p class="pHeading-Game"><u>Как работает приложение</u></p>
+				<p>
+					Игра Угадайка Мультиплеер рассчитана на двух игроков и заключается в том что программа загадывает число от 1 до 100. Далее, каждый из игроков пытается угадать это число за 10 попыток. Игра начинается с нажатия на кнопку Старт. После чего Игроку 1 предлагается ввести свой вариант ответа. Ответ отправляется с помощью клавиши "Enter". Если число предложенное Игроком 1 не совпадает с загаданным, право хода переходит к Игроку 2. Каждый раз когда оба игрока используют свою очередную попытку, происходит смена раунда. Игра продолжается до тех пор пока один из игроков не угадает загаданное число, либо пока игроки не используют все 10 раундов.
 				</p>
 				<p>
 					В случае выиграша, на экране появляется сообщение с поздравлением игрока, указавшего верное число. Сообщение сопровождается анимацией из салюта и падающих звезд. В случае проиграша, на экране появляется сообщение, уведомляющее игроков о конце игры и раскрывающее загаданное число. Данное сообщение сопровождается анимацией из грустного смайлика. Для того чтобы закрыть любое из этих сообщений необходимо либо кликнуть на значек "Х" в правом верхнем углу сообщения, либо кликнуть на экран вне границ сообщения, либо нажать на клавишу "Esc". После этого страница перезагружается и игра принимает свой первоначальный вид.
@@ -66,17 +72,16 @@
     <div class="msgCover">
 	    <div class="msg">
 	    	<span>x</span>
-	    	<p>Вы уверены что хотите выйти из игры?</p>
+	    	<p id="confMsg">Вы уверены что хотите выйти из игры?</p>
 	    	<input type="button" id="yes" name="yes" value="Да">
 	    	<input type="button" id="cancel" name="cancel" value="Нет">
 	    </div>
     </div>
     <div class="msgCover">
-    	
     	<div class="msg" id="congradsBox">
     		<span>x</span>
     		<p id="congrads"><b>Поздравляем!</b></p>
-    		<p>Вы верно указали загаданное число!</p>
+    		<p></p>
     	</div>
     	<div id="images">
     		<img class="star9" src="star.png">
@@ -92,20 +97,6 @@
     		<img class="star3" src="star.png">
     		<img class="star7" src="star.png">
     	</div>
-    	<!--<div id="images">
-    		<img class="star7" src="star.png">
-    		<img class="star5" src="star.png">
-    		<img class="star8" src="star.png">
-    		<img class="star4" src="star.png">
-    		<img class="star6" src="star.png">
-    		<img class="star2" src="star.png">
-    		<img class="star4" src="star.png">
-    		<img class="star1" src="star.png">
-    		<img class="star3" src="star.png">
-    		<img class="star5" src="star.png">
-    		<img class="star8" src="star.png">
-    		<img class="star9" src="star.png">
-    	</div>-->
     	<div id="imageBlock">
     		<img src="firework3.png" class="firework" id="fw1">
     		<img src="firework3.png" class="firework" id="fw2">
@@ -115,7 +106,7 @@
     <div class="msgCover">
     	<div class="msg" id="gameOver">
     		<span>x</span>
-    		<h1>Игра закончена!</h1>
+    		<p id="gameOverMsg">Игра закончена!</p>
     		<p></p>
     		<img src="sadFace10.png" id="sadFace">
     	</div>
