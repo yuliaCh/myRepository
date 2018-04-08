@@ -4,66 +4,116 @@ from oauth2client.service_account import ServiceAccountCredentials
 import os
 import json
 from slackclient import SlackClient
+import logging
+import sys
 
 
-def get_slack_user_names(user_profiles):
-    slack_user_dict = {}
+def open_gsheet(gsheet_credentials):
+    client = gspread.authorize(gsheet_credentials)
+    activated_sheet = client.open("Birthdays_test").sheet1
+    return activated_sheet
 
+def validate_column_names(activated_sheet):
+    row_values = activated_sheet.row_values(1)
+    logging.debug("ROW_VALUES_TYPE:\n" + str(type(row_values)))
+    logging.debug("ROW_VALUES:\n" + str(row_values))
+    if not "full name ENG" in row_values:
+        logging.error("'full name ENG_1' header is not in the google spreadsheet")
+        sys.exit()
+    if not "Date" in row_values:
+        logging.error("'Date' header is not in the google spreadsheet")
+        sys.exit()
+        logging.error("Header 'Date_1' is not in the google spreadsheet")
+
+
+def get_slack_user_names(slack_client):
+    user_profiles = slack_client.api_call("users.list")["members"]
+    logging.debug("user_profile:\n" + json.dumps(user_profiles, indent = 2))
+    slack_users = {}
     for user in user_profiles:
         if not user["deleted"]:
-            name = str(user["real_name"])
-            id = str(user["id"])
-            slack_user_dict[name] = id
+            name = user["real_name"].lower()
+            id = user["id"]
+            slack_users[name] = id
+    logging.debug("slack_users:\n" + json.dumps(slack_users, indent = 2))
+    return slack_users
 
-    return slack_user_dict
 
-def open_gsheet(creds):
-    client = gspread.authorize(creds)
-    sheet = client.open("Birthdays_test").sheet1
-    gsheet_data = sheet.get_all_records()
+def get_gsheet_values(activated_sheet):
+    gsheet_data = activated_sheet.get_all_records()
+    logging.debug(gsheet_data)
     return gsheet_data
 
-#Google spreadsheet needs to have a header for the column with full user names
-def get_gspread_name_list(gs_data, date):
-    gsheet_user_list = []
-    for user in gs_data:
-        if user['Date'] == date:
-            gsheet_user_list.append(user['full name ENG'])
-    return gsheet_user_list
 
-def post_message(sl_dict, gs_list, sc):
-    for user in sl_dict:
-        for member in gs_list:
+# Google spreadsheet needs to have a header for the column with full user names
+def get_gspread_users(gsheet_data):
+    current_date = date.today().strftime("%-d-%b")
+    print('CURRENT DATE')
+    print(current_date)
+    gsheet_users = []
+    for user in gsheet_data:
+            if user['Date'] == current_date:
+                gsheet_users.append(user['full name ENG'].lower())
+    logging.debug("gsheet_users:\n" + str(gsheet_users))
+    return gsheet_users
+
+
+'''def post_message(slack_users, gsheet_users, slack_client):
+    for user in slack_users:
+        for member in gsheet_users:
             if user == member:
-                sc.api_call("chat.postMessage",
-                            channel=sl_dict[user],
+                slack_client.api_call("chat.postMessage",
+                            channel=slack_users[user],
                             text="new message! - 4")
-                sc.api_call("chat.postMessage",
+                slack_client.api_call("chat.postMessage",
                             channel="#general",
-                            text="post to #general! - 4")
+                            text="post to #general! - 4") '''
+
+
+'''def post_message(slack_users, gsheet_users, slack_client):
+    for member in gsheet_users:
+        response = slack_client.api_call("chat.postMessage",
+                                         channel=slack_users[member],
+                                         text="Happy Bday, " + member)
+        if not response["ok"]:
+            slack_client.api_call("chat.postMessage",
+                                  channel="#general",
+                                  text="Say Happy Bday to " + member + "!")
+        else:
+            logging.warning(member + " doesn't exist in Slack")
+            print()'''
+
+def post_message(slack_users, gsheet_users, slack_client):
+    for member in gsheet_users:
+        try:
+            slack_client.api_call("chat.postMessage",
+                                             channel=slack_users[member],
+                                             text="Happy Bday_2, " + member)
+            logging.info("Bday notification has been personally sent to " + member )
+        except KeyError as err:
+            logging.warning("KeyError: " + str(err) + " does not exist in Slack")
+        else:
+            slack_client.api_call("chat.postMessage",
+                                  channel="#general",
+                                  text="Say Happy Bday_2 to " + member + "!")
+            logging.info("Bday notification has been sent to "
+                         + member + "in general channel")
 
 
 def main():
     slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
-    slack_user_profiles = slack_client.api_call("users.list")["members"]
-
     scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
     JSON_FILE = '/home/yulia/python_projects/MyProject-d27a72192381.json'
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(JSON_FILE, scope)
+    gsheet_credentials = ServiceAccountCredentials.from_json_keyfile_name(JSON_FILE, scope)
 
-    current_date = date.today().strftime("%d-%b")
-
-    slack_user_dict = get_slack_user_names(slack_user_profiles)
-    print(slack_user_dict)
-    gsheet_data = open_gsheet(credentials)
-    print(gsheet_data)
-    gsheet_user_list = get_gspread_name_list(gsheet_data, current_date)
-    print("gsheet_user_list")
-    print(gsheet_user_list)
-    post_message(slack_user_dict, gsheet_user_list, slack_client)
-    print(post_message)
-
+    activated_sheet = open_gsheet(gsheet_credentials)
+    validate_column_names(activated_sheet)
+    slack_users = get_slack_user_names(slack_client)
+    gsheet_data = get_gsheet_values(activated_sheet)
+    gsheet_users = get_gspread_users(gsheet_data)
+    post_message(slack_users, gsheet_users, slack_client)
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(levelname)s: %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
     main()
