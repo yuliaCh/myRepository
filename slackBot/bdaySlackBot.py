@@ -52,8 +52,12 @@ def get_gspread_users(gsheet_data):
     print(current_date)
     gsheet_users = []
     for user in gsheet_data:
+        try:
             if user['Date'] == current_date:
                 gsheet_users.append(user['full name ENG'].lower())
+        except KeyError as err:
+            logging.error("KeyError: " + str(err) + " header does not exist in google spreadsheet")
+            sys.exit(err)
     logging.debug("gsheet_users:\n" + str(gsheet_users))
     return gsheet_users
 
@@ -88,16 +92,16 @@ def post_message(slack_users, gsheet_users, slack_client):
         try:
             slack_client.api_call("chat.postMessage",
                                              channel=slack_users[member],
-                                             text="Happy Bday_2, " + member)
-            logging.info("Bday notification has been personally sent to " + member )
+                                             text="Happy Bday_3, " + member)
+            logging.info("Bday notification has been personally sent to " + member)
         except KeyError as err:
             logging.warning("KeyError: " + str(err) + " does not exist in Slack")
         else:
             slack_client.api_call("chat.postMessage",
                                   channel="#general",
-                                  text="Say Happy Bday_2 to " + member + "!")
+                                  text="Say Happy Bday_3 to " + member + "!")
             logging.info("Bday notification has been sent to "
-                         + member + "in general channel")
+                         + member + " in general channel")
 
 
 def main():
