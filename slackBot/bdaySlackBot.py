@@ -1,4 +1,5 @@
 from datetime import date
+from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os
@@ -13,95 +14,78 @@ def open_gsheet(gsheet_credentials):
     activated_sheet = client.open("Birthdays_test").sheet1
     return activated_sheet
 
-def validate_column_names(activated_sheet):
-    row_values = activated_sheet.row_values(1)
-    logging.debug("ROW_VALUES_TYPE:\n" + str(type(row_values)))
-    logging.debug("ROW_VALUES:\n" + str(row_values))
-    if not "full name ENG" in row_values:
-        logging.error("'full name ENG_1' header is not in the google spreadsheet")
-        sys.exit()
-    if not "Date" in row_values:
-        logging.error("'Date' header is not in the google spreadsheet")
-        sys.exit()
-        logging.error("Header 'Date_1' is not in the google spreadsheet")
 
-
-def get_slack_user_names(slack_client):
-    user_profiles = slack_client.api_call("users.list")["members"]
-    logging.debug("user_profile:\n" + json.dumps(user_profiles, indent = 2))
-    slack_users = {}
-    for user in user_profiles:
-        if not user["deleted"]:
-            name = user["real_name"].lower()
-            id = user["id"]
-            slack_users[name] = id
-    logging.debug("slack_users:\n" + json.dumps(slack_users, indent = 2))
-    return slack_users
+def validate_gsheet_headers(activated_sheet):
+    gsheet_headers = activated_sheet.row_values(1)
+    #logging.debug("gsheet_header:\n" + str(gsheet_headers))
+    mandatory_gsheet_headers = ["full name ENG", "Date"]
+    for header in mandatory_gsheet_headers:
+        try:
+            if header not in gsheet_headers:
+                raise Exception(header + " header is not on the spreadsheet")
+        except Exception as err:
+            logging.error(err)
+            sys.exit(err)
 
 
 def get_gsheet_values(activated_sheet):
     gsheet_data = activated_sheet.get_all_records()
-    logging.debug(gsheet_data)
+    #logging.debug(gsheet_data)
     return gsheet_data
 
 
-# Google spreadsheet needs to have a header for the column with full user names
-def get_gspread_users(gsheet_data):
-    current_date = date.today().strftime("%-d-%b")
-    print('CURRENT DATE')
-    print(current_date)
+def get_gsheet_users(gsheet_data):
     gsheet_users = []
     for user in gsheet_data:
-        try:
-            if user['Date'] == current_date:
-                gsheet_users.append(user['full name ENG'].lower())
-        except KeyError as err:
-            logging.error("KeyError: " + str(err) + " header does not exist in google spreadsheet")
-            sys.exit(err)
-    logging.debug("gsheet_users:\n" + str(gsheet_users))
+        if user["full name ENG"] != "" and user["full name ENG"] != " ":
+            sub_gsheet_users = {}
+            name = user["full name ENG"]
+            date = user["Date"]
+            sub_gsheet_users["name"] = name
+            sub_gsheet_users["date"] = date
+            gsheet_users.append(sub_gsheet_users)
+    #logging.debug("GSHEET_USERS: \n" + str(gsheet_users))
     return gsheet_users
 
 
-'''def post_message(slack_users, gsheet_users, slack_client):
-    for user in slack_users:
-        for member in gsheet_users:
-            if user == member:
-                slack_client.api_call("chat.postMessage",
-                            channel=slack_users[user],
-                            text="new message! - 4")
-                slack_client.api_call("chat.postMessage",
-                            channel="#general",
-                            text="post to #general! - 4") '''
-
-
-'''def post_message(slack_users, gsheet_users, slack_client):
-    for member in gsheet_users:
-        response = slack_client.api_call("chat.postMessage",
-                                         channel=slack_users[member],
-                                         text="Happy Bday, " + member)
-        if not response["ok"]:
-            slack_client.api_call("chat.postMessage",
-                                  channel="#general",
-                                  text="Say Happy Bday to " + member + "!")
-        else:
-            logging.warning(member + " doesn't exist in Slack")
-            print()'''
-
-def post_message(slack_users, gsheet_users, slack_client):
-    for member in gsheet_users:
+def validate_gsheet_date(gsheet_users):
+    for user in gsheet_users:
         try:
-            slack_client.api_call("chat.postMessage",
-                                             channel=slack_users[member],
-                                             text="Happy Bday_3, " + member)
-            logging.info("Bday notification has been personally sent to " + member)
-        except KeyError as err:
-            logging.warning("KeyError: " + str(err) + " does not exist in Slack")
-        else:
-            slack_client.api_call("chat.postMessage",
-                                  channel="#general",
-                                  text="Say Happy Bday_3 to " + member + "!")
-            logging.info("Bday notification has been sent to "
-                         + member + " in general channel")
+            datetime.strptime(user["date"], "%d-%b")
+        except ValueError as err:
+            logging.warning(user["name"] + ": date of birth format is incorrect; " + str(err))
+
+
+def get_slack_users(slack_client):
+    user_profiles = slack_client.api_call("users.list")["members"]
+    #logging.debug("user_profile:\n" + json.dumps(user_profiles, indent = 2))
+    slack_users = {}
+    for user in user_profiles:
+        if user["id"] != "USLACKBOT" and not user["deleted"] and not user["is_bot"]:
+            name = user["real_name"].lower()
+            id = user["id"]
+            slack_users[name] = id
+    #logging.debug("slack_users:\n" + str(slack_users))
+    return slack_users
+
+
+def post_slack_message(slack_users, gsheet_users, slack_client):
+    current_date = date.today().strftime("%-d-%b")
+    for user in gsheet_users:
+        if user["date"] == current_date:
+            try:
+                slack_client.api_call("chat.postMessage",
+                                      channel=slack_users[user["name"].lower()],
+                                      text="Happy Bday_3, " + user["name"])
+                logging.info("Bday notification has been personally sent to " + user["name"])
+            except KeyError as err:
+                logging.warning("KeyError: " + str(err) + " does not exist in Slack")
+            else:
+                slack_client.api_call("chat.postMessage",
+                                      channel="#general",
+                                      text="Say Happy Bday_3 to " + user["name"] + "!")
+                logging.info("Bday notification has been sent to "
+                             + user["name"] + " in general channel")
 
 
 def main():
@@ -111,11 +95,12 @@ def main():
     gsheet_credentials = ServiceAccountCredentials.from_json_keyfile_name(JSON_FILE, scope)
 
     activated_sheet = open_gsheet(gsheet_credentials)
-    validate_column_names(activated_sheet)
-    slack_users = get_slack_user_names(slack_client)
+    validate_gsheet_headers(activated_sheet)
     gsheet_data = get_gsheet_values(activated_sheet)
-    gsheet_users = get_gspread_users(gsheet_data)
-    post_message(slack_users, gsheet_users, slack_client)
+    gsheet_users = get_gsheet_users(gsheet_data)
+    validate_gsheet_date(gsheet_users)
+    slack_users = get_slack_users(slack_client)
+    post_slack_message(slack_users, gsheet_users, slack_client)
 
 
 if __name__ == '__main__':
