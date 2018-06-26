@@ -19,7 +19,7 @@ Creating ArgumentParser object, which contains provided command-line arguments
     """
     parser = argparse.ArgumentParser(description='''SlackBot sends birthday congratulations
 to employees in Slack messenger based on provided google spreadsheet containing employees' dates of birth. 
-In order for programm to run successfully, both argumeents (slack token and json file) should be supplied. 
+In order for the program to run successfully, both arguments (slack token and json file) should be supplied. 
 The arguments are not positional, but they are required.''')
     parser.add_argument('-t', '--token', required=True, help='''slack token;
  this argument is not positional, but it is required.''')
@@ -39,7 +39,7 @@ Getting access to sheet1 of google spreadsheet
     :rtype activated_sheet: Worksheet object
     """
     client = gspread.authorize(gsheet_credentials)
-    activated_sheet = client.open("Bday_test_2").sheet1
+    activated_sheet = client.open("Bdays_autocongrats").sheet1
     return activated_sheet
 
 
