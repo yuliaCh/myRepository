@@ -1,21 +1,22 @@
 # -*- encoding: utf-8 -*-
+import sys
+import logging
+from socket import error
+from requests import RequestException
+import time
 from datetime import date
 from datetime import datetime
+import argparse
+import smtplib
+from email.MIMEText import MIMEText
+
+import StringIO
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from slackclient import SlackClient, exceptions
-import logging
-import sys
-#import json
-import argparse
 import yaml
-import StringIO
-import time
-import smtplib
-from email.MIMEText import MIMEText
 from httplib2 import HttpLib2Error
-from requests import RequestException
-from socket import error
+
 
 
 def create_parser():
@@ -113,7 +114,6 @@ Error type: {type}. Error content: {content}".format(type=type(err),content=str(
             sub_gsheet_users["name"] = name
             sub_gsheet_users["date"] = date
             gsheet_users.append(sub_gsheet_users)
-    #logging.debug(gsheet_users)
     return gsheet_users
 
 
@@ -154,13 +154,12 @@ If an attempt is unsuccessful, the issue gets logged and the script exits.
                 "An error occurred while trying to get slack user list. \
 Error type: {type}. Error content: {content}".format(type=type(err),content=str(err)))
             sys.exit("Process finished with exit code 1")
-    #logging.debug("user_profile:\n {}".format(json.dumps(user_profiles, indent = 2)))
     for user in user_profiles:
         if user["id"] != "USLACKBOT" and not user["deleted"] and not user["is_bot"]:
             name = user["real_name"].strip().lower()
             id = user["id"]
             slack_users[name] = id
-    #logging.debug("slack_users:\n {}".format(slack_users))
+
     return slack_users
 
 
@@ -310,7 +309,6 @@ Storing log content into a variable and closing the log string.
     """
     log_content = log_string.getvalue()
     log_string.close()
-    #logging.debug(log_content)
     return log_content
 
 
