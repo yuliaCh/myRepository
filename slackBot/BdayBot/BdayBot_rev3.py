@@ -106,7 +106,7 @@ Error type: {type}. Error content: {content}".format(type=type(err),content=str(
             sys.exit("Process finished with exit code 1")
     gsheet_users = []
     for value in gsheet_values:
-        if value[0] != "" and value[0] != " ":
+        if value[0].strip() != "" and value[0] != " ":
             sub_gsheet_users = {}
             name = value[0].strip()
             date = value[1]
